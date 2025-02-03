@@ -14,7 +14,7 @@ case $choice in
         ;;
     2)
         echo "Installing Docker for a multi-node setup..."
-        ./resources/docker/docker_install_multi_node.sh
+        ./others/docker/docker/docker_install_multi_node.sh
         ;;
     3)
         echo "Skipping Docker installation. Continuing to the next step..."
