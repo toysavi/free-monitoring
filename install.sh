@@ -10,7 +10,7 @@ read -p "Enter your choice (1, 2, or 3): " choice
 case $choice in
     1)
         echo "Installing Docker for a single node..."
-        ./resources/docker/docker_install_single_node.sh
+        ./others/docker/docker_install_single_node.sh
         ;;
     2)
         echo "Installing Docker for a multi-node setup..."
