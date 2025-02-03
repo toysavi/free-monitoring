@@ -84,8 +84,9 @@ deploy_docker() {
     case $1 in
         1)
             echo "Deploying Docker in single-node mode..."
-            docker stack deploy -c ./resources/zabbix/task/single-node/docker-compose-single-node.yaml stack_zabbix-server
-            docker stack deploy -c ./resources/zabbix/task/single-node/docker-compose.nginx.yml stack_nginx
+            cd /docker/zabbix
+            docker stack deploy -c ./task/single-node/docker-compose-single-node.yaml stack_zabbix-server
+            docker stack deploy -c ./task/single-node/docker-compose.nginx.yml stack_nginx
             ;;
         2)
             echo "Deploying Docker in Swarm mode..."
