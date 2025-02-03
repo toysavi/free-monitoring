@@ -5,6 +5,7 @@ echo "Do you want to install Docker for a single node or multi-node setup?"
 echo "1) Single Node"
 echo "2) Multi Node"
 echo "3) Skip Docker installation and continue to the next step"
+# shellcheck disable=SC2162
 read -p "Enter your choice (1, 2, or 3): " choice
 
 case $choice in
@@ -33,6 +34,7 @@ echo ----------------------------------------
 
 # Asking to install Zabbix Server
 echo "Do you want to install Zabbix server?"
+# shellcheck disable=SC2162
 read -p "Enter your choice (yes/no): " install_zabbix
 
 if [[ "$install_zabbix" == "yes" ]]; then
@@ -42,29 +44,9 @@ else
     echo "Skipping Zabbix server installation."
 fi
 
-if [[ "$continue_next" != "yes" ]]; then
-    echo "Skipping next step."
-    exit 0
-fi
-
-# # Asking to install Zabbix Server
-# echo "Do you want to install Zabbix server?"
-# read -p "Enter your choice (yes/no): " install_zabbix
-
-# if [[ "$install_zabbix" == "yes" ]]; then
-#     echo "Installing Zabbix server..."
-#     ./resources/zabbix/zabbix_install.sh
-# else
-#     echo "Skipping Zabbix server installation."
-# fi
-
-# if [[ "$continue_next" != "yes" ]]; then
-#     echo "Skipping next step."
-#     exit 0
-# fi
-
 # Asking to install Grafana Monitor
 echo "Do you want to install Grafana Monitor?"
+# shellcheck disable=SC2162
 read -p "Enter your choice (yes/no): " install_grafana
 
 if [[ "$install_grafana" == "yes" ]]; then
@@ -74,6 +56,7 @@ else
     echo "Skipping Grafana Monitor installation."
 fi
 
+# shellcheck disable=SC2154
 if [[ "$continue_next" != "yes" ]]; then
     echo "Skipping next step."
     exit 0
