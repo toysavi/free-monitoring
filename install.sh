@@ -6,9 +6,9 @@ echo "1) Single Node"
 echo "2) Multi Node"
 echo "3) Skip Docker installation and continue to the next step"
 # shellcheck disable=SC2162
-read -p "Enter your choice (1, 2, or 3): " choice
+read -p "Enter your choice (1, 2, or 3): " choice_docker
 
-case $choice in
+case $choice_docker in
     1)
         echo "Installing Docker for a single node..."
         ./others/docker/docker_install_single_node.sh
@@ -26,6 +26,28 @@ case $choice in
         ;;
 esac
 
+# Prompting the user for Zabbix installation options
+echo "Do you want to install Zabbix for a single node or swarm-node setup?"
+echo "1) Single Node"
+echo "2) Swarm Node"
+# shellcheck disable=SC2162
+read -p "Enter your choice (1, 2): " choice_zabbix
+
+case $choice_zabbix in
+    1)
+        echo "Installing zabbix for a single node..."
+        ./single-node/scripts/zabbix_install.sh
+        ;;
+    2)
+        echo "Installing zabbix for a swarm-node setup..."
+        #./others/docker/docker/docker_install_multi_node.sh
+        ;;
+    *)
+        echo "Invalid choice. Exiting."
+        exit 1
+        ;;
+esac
+
 # Proceeding to the next step
 echo ----------------------------------------
 echo "Starting application deployment..."
@@ -36,6 +58,8 @@ echo ----------------------------------------
 echo "Do you want to install Zabbix server?"
 # shellcheck disable=SC2162
 read -p "Enter your choice (yes/no): " install_zabbix
+
+
 
 if [[ "$install_zabbix" == "yes" ]]; then
     echo "Installing Zabbix server..."
